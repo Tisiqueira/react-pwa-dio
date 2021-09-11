@@ -1,6 +1,8 @@
 import React,{ memo, useEffect, useState} from "react";
 import { Row, Col } from "antd";
 import Economy from "./components/Economy";
+import Tecnology from "./components/Tecnology";
+import World from "./components/World";
 import Api from "../resouce/Api";
 
 function Home(){
@@ -34,15 +36,17 @@ function Home(){
             <Row gutter={[16, 16]}>
                 <Col span={24} md={16}>
                     <h2>World</h2>
+                    <World values={news?.world}/>
                 </Col>
-                <Col span={24} md={16}>
+                <Col span={24} md={8}>
                     <h2>Economy</h2>
                     <Economy values={news?.economy}/>
                 </Col>
             </Row>
             <Row gutter={[16, 16]}>
-                <Col span={24} md={16}>
+                <Col span={24} >
                     <h2>Tecnology</h2>
+                    <Tecnology values={news?.tecnology}/>
                 </Col>
             </Row>
         </div>
