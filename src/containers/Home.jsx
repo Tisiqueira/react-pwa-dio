@@ -1,5 +1,6 @@
 import React,{ memo, useEffect, useState} from "react";
 import { Row, Col } from "antd";
+import Economy from "./components/Economy";
 import Api from "../resouce/Api";
 
 function Home(){
@@ -7,7 +8,13 @@ function Home(){
     const [ loading, setLoading ] = useState(false);
 
     const handleNews = (articles) => {
-        console.log('ar', articles)
+        setLoading(false)
+        setNews({
+            world: articles[0]?.value.value,
+            economy: articles[1]?.value.value,
+            tecnology: articles[2]?.value.value,
+
+        })
     }
 
     useEffect(()=>{
@@ -20,6 +27,8 @@ function Home(){
             .then(handleNews)
     },[])
 
+    if (loading) return <div>Carregando</div>
+
     return (
         <div>
             <Row gutter={[16, 16]}>
@@ -28,6 +37,7 @@ function Home(){
                 </Col>
                 <Col span={24} md={16}>
                     <h2>Economy</h2>
+                    <Economy values={news?.economy}/>
                 </Col>
             </Row>
             <Row gutter={[16, 16]}>
