@@ -5,11 +5,20 @@ const params = {
     }
 }
 
-const URL = "https://localhost:3000";
+const URL = "http://localhost:3000/api";
 
 function getNews(subject) {
     return fetch(`${URL}/${subject}`,params)
-        .then((response) => Response.json())
+        .then((response) => response.json())
+        .catch((err)=>{
+            console.log('Ocorreu um erro', err)
+        })
+
+}
+
+function getNewsById(subject, id) {
+    return fetch(`${URL}/${subject}/${id}`,params)
+        .then((response) => response.json())
         .catch((err)=>{
             console.log('Ocorreu um erro', err)
         })
@@ -17,5 +26,6 @@ function getNews(subject) {
 }
 
 export default {
-    getNews
+    getNews,
+    getNewsById
 }
