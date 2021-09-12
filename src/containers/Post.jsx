@@ -2,7 +2,7 @@ import React, { memo, useEffect, useState, useCallback } from 'react'
 import { useHistory, useParams, Link } from 'react-router-dom'
 import { Row, Col } from 'antd'
 import Api from '../resouce/Api'
-//import Actions from './components/Actions'
+import Actions from './components/Actions'
 import { createMarkup } from '../utils'
 import './style.css'
 
@@ -64,6 +64,8 @@ function Post() {
   return (
     <div>
       
+      <Link to="/">Back</Link>
+      <Actions post={post} subject={subject} />
       <Row gutter={[16, 16]}>
         <Col span={24} md={16}>
           <p>{datePublished}</p>
